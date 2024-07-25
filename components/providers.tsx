@@ -1,9 +1,13 @@
 "use client"
 
+import { SDKProvider } from "@telegram-apps/sdk-react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import type { ThemeProviderProps } from "next-themes/dist/types"
-import * as React from "react"
 
 export function Providers({ children, ...props }: ThemeProviderProps) {
-	return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+	return (
+		<SDKProvider>
+			<NextThemesProvider {...props}>{children}</NextThemesProvider>
+		</SDKProvider>
+	)
 }
